@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhật ký Du lịch Của Nam  </title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      .navbar {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .text-teal {
+        color: #009688;
+      } /* Màu xanh chủ đạo */
+      .btn-teal {
+        background-color: #009688;
+        color: white;
+        border: none;
+      }
+      .btn-teal:hover {
+        background-color: #00796b;
+        color: white;
+      }
+
+      .nav-link {
+        color: #6c757d;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 15px 20px;
+      }
+      .nav-link:hover {
+        color: #009688;
+      }
+      .active-tab {
+        border-bottom: 3px solid #009688;
+        color: #009688 !important;
+      }
+
+      .code-box {
+        background-color: #282c34;
+        color: #abb2bf;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: monospace;
+      }
+      .code-box-fixed {
+        background-color: #1e3a2f;
+        color: #a8ceb5;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg py-0 mb-4">
+      <div class="container">
+        <a class="navbar-brand text-teal fw-bold" href="#">
+          <span class="fs-4">📖 Nhật ký Du lịch Của Nam</span>
+        </a>
+        <div class="d-flex">
+          <a
+            class="nav-link active-tab"
+            id="tab-home"
+            onclick="showPage('home')"
+            >Trang Chủ</a
+          >
+          <a class="nav-link" id="tab-manage" onclick="showPage('manage')"
+            >Quản Lý</a
+          >
+          <a class="nav-link" id="tab-debug" onclick="showPage('debug')"
+            >Debug</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div id="page-home" class="page-section">
+        <div
+          id="carouselExample"
+          class="carousel slide mb-5 rounded overflow-hidden"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="bien incheon.jpg "
+                class="d-block w-100"
+                alt=" biển Incheon" "
+              />
+              <div class="carousel-caption d-none d-md-block text-start">
+                <h3 class="fw-bold text-white">Biển Incheon Hàn Quốc</h3>
+                <p class="text-white">
+                 Nổi bật với bãi biển Hoàng Hải, nơi đây là sự giao thoa hoàn hảo giữa thiên nhiên ven biển yên bình, các hòn đảo hoang sơ và nét hiện đại của các khu đô thị 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h4 class="mb-4 text-secondary">⭐ Đặc sản nơi đây </h4>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                class="card-img-top"                
+                alt="Phở"
+                src="cua xanh.jpg"
+
+              />
+              <div class="card-body">
+                <h5 class="card-title"> Món cua xanh (Kkotge) Incheon hấp dẫn thực khách nhờ sự kết hợp giữa độ tươi ngon nguyên bản và cách chế biến đặc trưng
+</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <img
+                src="lươn nướng incheon.jpg"
+                class="card-img-top"
+                alt="Mì Quảng"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Món lươn nướng tại Incheon (Hàn Quốc) – đặc biệt là lươn nướng bãi bồi đảo Ganghwa (Ganghwa tidal flat eel) – là một trong những đặc sản bổ dưỡng, cao cấp và nổi tiếng bậc nhất tại xứ sở kim chi. Không giống như lươn nuôi nước ngọt thông thường, lươn bãi bồi tại khu vực Incheon có hương vị vô cùng khác biệt nhờ môi trường tự nhiên đặc thù</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-manage" class="page-section" style="display: none">
+        <div class="card border-0 shadow-sm mb-4 p-3 text-center">
+          <p class="mb-2 text-secondary">
+           
+          </p>
+          <img
+            src="anh ban than.png"
+            alt="Check-in"
+            class="img-fluid rounded mx-auto"
+            style="max-width: 300px"
+          />
+        </div>
+
+        <div class="card border-0 shadow-sm mb-4 p-4">
+          <form id="tripForm">
+            <div class="row mb-3">
+              <div class="col-md-12 mb-3">
+                <label class="form-label text-secondary"
+                  >Mã số sinh viên </label
+                >
+                <input
+                  type="text"
+                  id="mssv"
+                  class="form-control"
+                  placeholder="VD: 254d....."
+                  required
+                />
+              </div>
+              <div class="col-md-12 mb-3">
+                <label class="form-label text-secondary">Địa danh *</label>
+                <input
+                  type="text"
+                  id="diadanh"
+                  class="form-control"
+                  placeholder="VD: Phú Quốc"
+                  required
+                />
+              </div>
+              <div class="col-md-12 mb-3">
+                <label class="form-label text-secondary"
+                  >Kinh phí (VNĐ) *</label
+                >
+                <input
+                  type="number"
+                  id="kinhphi"
+                  class="form-control"
+                  placeholder="VD: 5000000"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label text-secondary"
+                  >Thời gian (ngày) *</label
+                >
+                <input
+                  type="number"
+                  id="thoigian"
+                  class="form-control"
+                  placeholder="VD: 3"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label text-secondary">Số người *</label>
+                <input
+                  type="number"
+                  id="songuoi"
+                  class="form-control"
+                  placeholder="VD: 2"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-teal w-100 py-2 fw-bold"
+              onclick="themChuyenDi()"
+            >
+              Ghi nhận chuyến đi
+            </button>
+          </form>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div
+              class="card border-0 shadow-sm p-3 d-flex flex-row align-items-center"
+            >
+              <div class="bg-light p-3 rounded-circle me-3 text-teal">💰</div>
+              <div>
+                <p class="mb-0 text-secondary">Tổng kinh phí</p>
+                <h4 class="mb-0 fw-bold" id="tongKinhPhi">0 VNĐ</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div
+              class="card border-0 shadow-sm p-3 d-flex flex-row align-items-center"
+            >
+              <div class="bg-light p-3 rounded-circle me-3 text-teal">📅</div>
+              <div>
+                <p class="mb-0 text-secondary">Tổng thời gian</p>
+                <h4 class="mb-0 fw-bold" id="tongThoiGian">0 ngày</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm p-4">
+          <h5 class="text-secondary mb-3">Danh sách chuyến đi</h5>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>MSSV</th>
+                  <th>Địa danh</th>
+                  <th>Kinh phí</th>
+                  <th>Thời gian</th>
+                  <th>Số người</th>
+                </tr>
+              </thead>
+              <tbody id="bangDuLieu"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-debug" class="page-section" style="display: none">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-header bg-white text-danger fw-bold border-0">
+                📄 Đoạn mã gốc (Có lỗi)
+              </div>
+              <div class="card-body">
+                <pre class="code-box"><code>function checkLoad(totalCredits) {
+  let msg = (totalCredits > 15) ? "Đủ tải" : "Chưa đủ tải";
+  document.getElementById("status").value(msg);
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-header bg-white text-teal fw-bold border-0">
+                ✔️ Đoạn mã đã sửa
+              </div>
+              <div class="card-body">
+                <pre
+                  class="code-box-fixed"
+                ><code>function checkLoad(totalCredits) {
+  let msg = (totalCredits > 15) ? "Đủ tải" : "Chưa đủ tải";
+  
+  // SỬA LỖI:
+  // Thuộc tính .value không phải là một hàm (function).
+  // Cần dùng dấu '=' để gán giá trị.
+  document.getElementById("status").value = msg;
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mt-3 p-4 bg-light">
+          <h5 class="fw-bold">Giải thích lỗi sai:</h5>
+          <ul class="text-secondary mt-2">
+            <li>
+              <strong class="text-danger">Lỗi thao tác DOM:</strong> Đoạn mã
+              <code>.value(msg)</code> là sai cú pháp. Thuộc tính `value` không
+              phải là một phương thức để gọi như hàm.
+            </li>
+            <li>
+              <strong class="text-teal">Khắc phục:</strong> Gán giá trị bằng
+              toán tử <code>=</code>. Code đúng phải là:
+              <code>.value = msg;</code>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 1. Hàm chuyển đổi giữa các Tab (Trang Chủ, Quản Lý, Debug)
+      function showPage(pageId) {
+        // Ẩn tất cả các trang
+        document.getElementById("page-home").style.display = "none";
+        document.getElementById("page-manage").style.display = "none";
+        document.getElementById("page-debug").style.display = "none";
+
+        // Bỏ màu xanh ở tất cả các tab menu
+        document.getElementById("tab-home").classList.remove("active-tab");
+        document.getElementById("tab-manage").classList.remove("active-tab");
+        document.getElementById("tab-debug").classList.remove("active-tab");
+
+        // Hiện trang được chọn và tô màu xanh cho tab đó
+        document.getElementById("page-" + pageId).style.display = "block";
+        document.getElementById("tab-" + pageId).classList.add("active-tab");
+      }
+
+     
+      let tongKinhPhi = 0;
+      let tongNgay = 0;
+
+   
+      function themChuyenDi() {
+        // Lấy dữ liệu từ các ô input
+        let mssv = document.getElementById("mssv").value;
+        let diadanh = document.getElementById("diadanh").value;
+        let kinhphi = parseInt(document.getElementById("kinhphi").value);
+        let thoigian = parseInt(document.getElementById("thoigian").value);
+        let songuoi = document.getElementById("songuoi").value;
+
+       
+        if (
+          mssv == "" ||
+          diadanh == "" ||
+          isNaN(kinhphi) ||
+          isNaN(thoigian) ||
+          songuoi == ""
+        ) {
+          alert("Vui lòng nhập đầy đủ thông tin!");
+          return; 
+        }
+
+       
+        let trMoi = document.createElement("tr");
+        trMoi.innerHTML = `
+                <td>${mssv}</td>
+                <td>${diadanh}</td>
+                <td>${kinhphi.toLocaleString("vi-VN")} VNĐ</td>
+                <td>${thoigian} ngày</td>
+                <td>${songuoi}</td>
+            `;
+
+        let bang = document.getElementById("bangDuLieu");
+
+       
+        let soCuoiCung = parseInt(mssv.slice(-1));
+
+        if (soCuoiCung % 2 !== 0) {
+        
+          bang.prepend(trMoi);
+        } else {
+          
+          bang.appendChild(trMoi);
+        }
+
+       
+        tongKinhPhi = tongKinhPhi + kinhphi;
+        tongNgay = tongNgay + thoigian;
+
+       
+        document.getElementById("tongKinhPhi").innerText =
+          tongKinhPhi.toLocaleString("vi-VN") + " VNĐ";
+        document.getElementById("tongThoiGian").innerText = tongNgay + " ngày";
+
+       
+        if (thoigian > 10) {
+          alert("Nhà thám hiểm đại tài - Đi để trưởng thành");
+        }
+
+      
+        document.getElementById("tripForm").reset();
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
